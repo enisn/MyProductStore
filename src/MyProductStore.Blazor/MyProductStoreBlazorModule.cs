@@ -17,6 +17,7 @@ using Volo.Abp.AspNetCore.Components.WebAssembly.BasicTheme;
 using Volo.Abp.Identity.Blazor.WebAssembly;
 using Volo.Abp.SettingManagement.Blazor.WebAssembly;
 using Volo.Abp.TenantManagement.Blazor.WebAssembly;
+using Volo.Abp.AspNetCore.Components.Web.Theming.Toolbars;
 
 namespace MyProductStore.Blazor;
 
@@ -42,6 +43,11 @@ public class MyProductStoreBlazorModule : AbpModule
         ConfigureUI(builder);
         ConfigureMenu(context);
         ConfigureAutoMapper(context);
+
+        Configure<AbpToolbarOptions>(options =>
+        {
+            options.Contributors.Add(new MyProductStoreToolbarContributor());
+        });
     }
 
     private void ConfigureRouter(ServiceConfigurationContext context)

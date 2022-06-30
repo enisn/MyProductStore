@@ -1,0 +1,13 @@
+﻿@using Volo.Abp.AspNetCore.Components
+@inherits MyProductStoreComponentBase
+
+<i class="fa fa-bell" style="color:white" @onclick="ShowNotificationAsync" />
+
+@code {
+    public async Task ShowNotificationAsync()
+    {
+        await Message.Info(L["HelloFromNotifcations"]);
+        //await Message.Confirm("Are you sure to delete?", "Deleting");
+        await Notify.Success(L["HelloFromNotifcations"]);
+    }
+}

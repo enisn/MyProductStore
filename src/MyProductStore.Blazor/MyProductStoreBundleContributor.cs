@@ -9,11 +9,11 @@ public class MyProductStoreBundleContributor : IBundleContributor
 {
     public void AddScripts(BundleContext context)
     {
-
+        context.Add("myscript.js");
     }
 
     public void AddStyles(BundleContext context)
     {
-        context.Add("main.css", true);
+        context.Add("main.css", excludeFromBundle: true);
     }
 }

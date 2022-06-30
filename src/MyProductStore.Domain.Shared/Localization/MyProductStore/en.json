@@ -7,6 +7,9 @@
     "Enum:OrderStatus:0": "Order is retrieved",
     "Enum:OrderStatus:1": "Order is accepted",
     "Enum:OrderStatus:2": "Order is rejected",
-    "Enum:OrderStatus:3": "Order is delivered"
+    "Enum:OrderStatus:3": "Order is delivered",
+    "Menu:ProductManagement": "Product Management",
+    "WelcomeToApplication": "Welcome to the Application",
+    "HelloFromNotifcations": "Hello from Notifications component!"
   }
 }

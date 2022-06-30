@@ -1,8 +1,10 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyProductStore.Localization;
+using MyProductStore.Permissions;
 using Volo.Abp.Account.Localization;
 using Volo.Abp.Authorization.Permissions;
 using Volo.Abp.UI.Navigation;
@@ -44,6 +46,34 @@ public class MyProductStoreMenuContributor : IMenuContributor
                 icon: "fas fa-home"
             )
         );
+
+        context.Menu.Items.Add(new ApplicationMenuItem(
+                "ProductManagement",
+                l["Menu:ProductManagement"],
+                "/product-management"
+            )
+            //.RequireAuthenticated()
+            .RequirePermissions(MyProductStorePermissions.Products.Default));
+
+        // Example nested menu definition:
+        //context.Menu.AddItem(
+        //    new ApplicationMenuItem("Menu0", "Menu Level 0")
+        //    .AddItem(new ApplicationMenuItem("Menu0.1", "Menu Level 0.1", url: "/test01"))
+        //    .AddItem(
+        //        new ApplicationMenuItem("Menu0.2", "Menu Level 0.2")
+        //            .AddItem(new ApplicationMenuItem("Menu0.2.1", "Menu Level 0.2.1", url: "/test021"))
+        //            .AddItem(new ApplicationMenuItem("Menu0.2.2", "Menu Level 0.2.2")
+                       
+        //            .AddItem(new ApplicationMenuItem("Menu0.2.3", "Menu Level 0.2.3", url: "/test023"))
+        //            .AddItem(new ApplicationMenuItem("Menu0.2.4", "Menu Level 0.2.4", url: "/test024")
+        //                .AddItem(new ApplicationMenuItem("Menu0.2.4.1", "Menu Level 0.2.4.1", "/test0241"))
+        //        ) .AddItem(new ApplicationMenuItem("Menu0.2.2.1", "Menu Level 0.2.2.1", "/test0221"))
+        //                .AddItem(new ApplicationMenuItem("Menu0.2.2.2", "Menu Level 0.2.2.2", "/test0222"))
+        //            )
+        //        .AddItem(new ApplicationMenuItem("Menu0.2.5", "Menu Level 0.2.5", url: "/test025"))
+        //    )
+        //    .AddItem(new ApplicationMenuItem("Menu0.2", "Menu Level 0.2", url: "/test02"))
+        //);
 
         return Task.CompletedTask;
     }

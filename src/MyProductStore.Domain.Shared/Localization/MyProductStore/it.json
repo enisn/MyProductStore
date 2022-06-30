@@ -3,6 +3,8 @@
   "texts": {
     "Menu:Home": "Home",
     "Welcome": "Benvenuto",
-    "LongWelcomeMessage": "Benvenuto nell'applicazione. Questo è un progetto di avvio basato sul framework ABP. Per ulteriori informazioni, visita abp.io."
+    "LongWelcomeMessage": "Benvenuto nell'applicazione. Questo è un progetto di avvio basato sul framework ABP. Per ulteriori informazioni, visita abp.io.",
+    "Menu:ProductManagement": "Gestione del prodotto",
+    "HelloFromNotifcations": "Ciao dal componente Notifiche!"
   }
 }
