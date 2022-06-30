@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using MyProductStore.Permissions;
+using Volo.Abp;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
@@ -27,6 +28,15 @@ public class ProductAppService : CrudAppService<
         CreatePolicyName = MyProductStorePermissions.Products.Create;
         UpdatePolicyName = MyProductStorePermissions.Products.Edit;
         DeletePolicyName = MyProductStorePermissions.Products.Delete;
+    }
+
+    public override async Task<PagedResultDto<ProductDto>> GetListAsync(PagedAndSortedResultRequestDto input)
+    {
+        //throw new Exception("This operation can't be done!");
+
+        //throw new UserFriendlyException(L["OperationCantBeDone"], "MyProductStore.0102");
+
+        return await base.GetListAsync(input);
     }
 
     public async Task<List<ProductDto>> GetProductsByAvailabilityAsync(bool isAvailable)

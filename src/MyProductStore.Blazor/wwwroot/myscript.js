@@ -1,1 +1,3 @@
-﻿alert('Hello from my script!');
+﻿window.sayHello = function (name) {
+    alert("Hello " + name);
+}

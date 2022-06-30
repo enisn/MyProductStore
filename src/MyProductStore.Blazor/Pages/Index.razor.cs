@@ -7,6 +7,9 @@ using Volo.Abp.AspNetCore.Components.Web.Theming.Layout;
 using Microsoft.AspNetCore.Components;
 using Volo.Abp.AspNetCore.Components.Progression;
 using Microsoft.Extensions.Localization;
+using Volo.Abp.Users;
+using Volo.Abp.MultiTenancy;
+using Microsoft.JSInterop;
 
 namespace MyProductStore.Blazor.Pages;
 
@@ -15,6 +18,9 @@ public partial class Index
     public List<BreadcrumbItem> Breadcrumbs { get; } = new();
 
     public PageToolbar Toolbar { get; } = new();
+
+    [Inject]
+    public IJSRuntime JSRuntime { get; set; }
 
     protected override Task OnInitializedAsync()
     {
@@ -59,5 +65,10 @@ public partial class Index
         {
             options.Type = UiPageProgressType.Success;
         });
+    }
+
+    public async Task SayHelloFromJSAsync()
+    {
+        await JSRuntime.InvokeVoidAsync("sayHello", new[] { CurrentUser.UserName });
     }
 }

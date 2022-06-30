@@ -25,10 +25,16 @@ public class MyProductStoreHttpApiClientModule : AbpModule
 
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
-        context.Services.AddHttpClientProxies(
+        // Dynamic Proxies:
+        //context.Services.AddHttpClientProxies(
+        //    typeof(MyProductStoreApplicationContractsModule).Assembly,
+        //    RemoteServiceName
+        //);
+
+        // Static proxies:
+        context.Services.AddStaticHttpClientProxies(
             typeof(MyProductStoreApplicationContractsModule).Assembly,
-            RemoteServiceName
-        );
+            RemoteServiceName);
 
         Configure<AbpVirtualFileSystemOptions>(options =>
         {
