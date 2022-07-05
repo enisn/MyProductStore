@@ -25,96 +25,99 @@
 </Card>
 
 
-<Modal @ref="CreateModal">
-    <ModalTitle>
-        <h2>Create a new Product</h2>
-    </ModalTitle>
-    <ModalBody>
-        <Form>
-            <Validations @ref="@CreateValidationsRef" Model="@NewEntity" ValidateOnLoad="false">
-                <Validation>
-                    <Field>
-                        <FieldLabel>@L["DisplayName:Name"]</FieldLabel>
-                        <TextEdit @bind-Text="NewEntity.Name" Autofocus="true">
-                            <Feedback>
-                                <ValidationError />
-                            </Feedback>
-                        </TextEdit>
-                    </Field>
-                </Validation>
-                <Validation>
-                    <Field>
-                        <FieldLabel>@L["DisplayName:Price"]</FieldLabel>
-                        <NumericEdit @bind-Value="NewEntity.Price">
-                            <Feedback>
-                                <ValidationError />
-                            </Feedback>
-                        </NumericEdit>
-                    </Field>
-                </Validation>
-                <Validation>
-                    <Field>
-                        <FieldLabel>@L["DisplayName:IsAvailable"]</FieldLabel>
-                        <Check @bind-Checked="NewEntity.IsAvailable">
-                            <Feedback>
-                                <ValidationError />
-                            </Feedback>
-                        </Check>
-                    </Field>
-                </Validation>
-            </Validations>
-        </Form>
-    </ModalBody>
-
-    <ModalFooter>
-        <Button Color="Color.Secondary" Clicked="CloseCreateModalAsync">@L["Cancel"]</Button>
-        <SubmitButton Clicked="@CreateEntityAsync" />
-    </ModalFooter>
+<Modal @ref="CreateModal" Closing="@ClosingCreateModal">
+    <ModalContent Centered="true">
+        <ModalTitle>
+            Create a new Product
+        </ModalTitle>
+        <ModalBody>
+            <Form>
+                <Validations @ref="@CreateValidationsRef" Model="@NewEntity" ValidateOnLoad="false">
+                    <Validation>
+                        <Field>
+                            <FieldLabel>@L["DisplayName:Name"]</FieldLabel>
+                            <TextEdit @bind-Text="NewEntity.Name" Autofocus="true">
+                                <Feedback>
+                                    <ValidationError />
+                                </Feedback>
+                            </TextEdit>
+                        </Field>
+                    </Validation>
+                    <Validation>
+                        <Field>
+                            <FieldLabel>@L["DisplayName:Price"]</FieldLabel>
+                            <NumericEdit @bind-Value="NewEntity.Price">
+                                <Feedback>
+                                    <ValidationError />
+                                </Feedback>
+                            </NumericEdit>
+                        </Field>
+                    </Validation>
+                    <Validation>
+                        <Field>
+                            <FieldLabel>@L["DisplayName:IsAvailable"]</FieldLabel>
+                            <Check @bind-Checked="NewEntity.IsAvailable">
+                                <Feedback>
+                                    <ValidationError />
+                                </Feedback>
+                            </Check>
+                        </Field>
+                    </Validation>
+                </Validations>
+            </Form>
+        </ModalBody>
+        <ModalFooter>
+            <Button Color="Color.Secondary" Clicked="CloseCreateModalAsync">@L["Cancel"]</Button>
+            <SubmitButton Clicked="@CreateEntityAsync" />
+        </ModalFooter>
+    </ModalContent>
 </Modal>
 
-<Modal @ref="EditModal">
-    <ModalTitle>
-        <h2>Edit a Product</h2>
-    </ModalTitle>
-    <ModalBody>
-        <Form>
-            <Validations @ref="@CreateValidationsRef" Model="@EditingEntity" ValidateOnLoad="false">
-                <Validation>
-                    <Field>
-                        <FieldLabel>@L["DisplayName:Name"]</FieldLabel>
-                        <TextEdit @bind-Text="EditingEntity.Name" Autofocus="true">
-                            <Feedback>
-                                <ValidationError />
-                            </Feedback>
-                        </TextEdit>
-                    </Field>
-                </Validation>
-                <Validation>
-                    <Field>
-                        <FieldLabel>@L["DisplayName:Price"]</FieldLabel>
-                        <NumericEdit @bind-Value="EditingEntity.Price">
-                            <Feedback>
-                                <ValidationError />
-                            </Feedback>
-                        </NumericEdit>
-                    </Field>
-                </Validation>
-                <Validation>
-                    <Field>
-                        <FieldLabel>@L["DisplayName:IsAvailable"]</FieldLabel>
-                        <Check @bind-Checked="EditingEntity.IsAvailable">
-                            <Feedback>
-                                <ValidationError />
-                            </Feedback>
-                        </Check>
-                    </Field>
-                </Validation>
-            </Validations>
-        </Form>
-    </ModalBody>
+<Modal @ref="EditModal" Closing="@ClosingEditModal">
+    <ModalContent Centered="true">
+        <ModalTitle>
+            Edit a Product
+        </ModalTitle>
+        <ModalBody>
+            <Form>
+                <Validations @ref="@CreateValidationsRef" Model="@EditingEntity" ValidateOnLoad="false">
+                    <Validation>
+                        <Field>
+                            <FieldLabel>@L["DisplayName:Name"]</FieldLabel>
+                            <TextEdit @bind-Text="EditingEntity.Name" Autofocus="true">
+                                <Feedback>
+                                    <ValidationError />
+                                </Feedback>
+                            </TextEdit>
+                        </Field>
+                    </Validation>
+                    <Validation>
+                        <Field>
+                            <FieldLabel>@L["DisplayName:Price"]</FieldLabel>
+                            <NumericEdit @bind-Value="EditingEntity.Price">
+                                <Feedback>
+                                    <ValidationError />
+                                </Feedback>
+                            </NumericEdit>
+                        </Field>
+                    </Validation>
+                    <Validation>
+                        <Field>
+                            <FieldLabel>@L["DisplayName:IsAvailable"]</FieldLabel>
+                            <Check @bind-Checked="EditingEntity.IsAvailable">
+                                <Feedback>
+                                    <ValidationError />
+                                </Feedback>
+                            </Check>
+                        </Field>
+                    </Validation>
+                </Validations>
+            </Form>
+        </ModalBody>
 
-    <ModalFooter>
-        <Button Color="Color.Secondary" Clicked="CloseCreateModalAsync">@L["Cancel"]</Button>
-        <SubmitButton Clicked="@UpdateEntityAsync" />
-    </ModalFooter>
+        <ModalFooter>
+            <Button Color="Color.Secondary" Clicked="CloseCreateModalAsync">@L["Cancel"]</Button>
+            <SubmitButton Clicked="@UpdateEntityAsync" />
+        </ModalFooter>
+    </ModalContent>
 </Modal>
