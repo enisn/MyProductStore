@@ -1,4 +1,5 @@
-﻿using MyProductStore.Products;
+﻿using MyProductStore.Permissions;
+using MyProductStore.Products;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -12,6 +13,13 @@ public partial class ProductManagement
     public PageToolbar Toolbar { get; } = new();
 
     public List<TableColumn> ProductManagementTableColumns => TableColumns.Get<ProductManagement>();
+
+    public ProductManagement()
+    {
+        UpdatePolicyName = MyProductStorePermissions.Products.Edit;
+        DeletePolicyName = MyProductStorePermissions.Products.Delete;
+        CreatePolicyName = MyProductStorePermissions.Products.Create;
+    }
 
     protected override ValueTask SetEntityActionsAsync()
     {
